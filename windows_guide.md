@@ -99,7 +99,9 @@ From here we follow the official OpenAI Spinning Up instructions https://spinnin
 - `pip install -e .`
 
 ### Test Spinning Up
-Now run the test script command to train an RL agent using the PPO algorithm.
+Throughout this section compare with the screenshot collage [`spinningup_install_check.jpg`](spinningup_install_check.jpg).
+
+Run the test script command to train an RL agent using the PPO algorithm.
 - `python -m spinup.run ppo --hid "[32,32]" --env LunarLander-v2 --exp_name installtest --gamma 0.999`
 - NOTE: This will take several minutes to complete.
 - NOTE: If it works properly you should see real time update tables of values like
@@ -117,6 +119,7 @@ Then you can watch a video of the trained policy.
 
 And plot the results.
 - `python -m spinup.run plot data\installtest\installtest_s0`
-- NOTE: You MUST use backslashes in the path for the plot.py to run properly, which is the Windows convention.
-- This contrasts with the Linux convention of forward slashes (which is used throughout Spinning Up).
-- Otherwise plot.py will get screwed up, particularly on the line
+- NOTE: You MUST use backslashes in the path, which is the Windows convention.
+- This contrasts with the Linux convention of forward slashes, which is used throughout Spinning Up.
+  - Do not just blindly copy code snippets that involve paths from the Spinning Up docs!
+- Otherwise `plot.py` will not build the `logdirs` list of strings properly.
