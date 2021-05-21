@@ -120,4 +120,3 @@ And plot the results.
 - NOTE: You MUST use backslashes in the path for the plot.py to run properly, which is the Windows convention.
 - This contrasts with the Linux convention of forward slashes (which is used throughout Spinning Up).
 - Otherwise plot.py will get screwed up, particularly on the line
-- `logdirs += sorted([fulldir(x) for x in listdir if prefix in x])`
