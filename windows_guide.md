@@ -201,3 +201,6 @@ Throughout this section compare with the screenshot collage [`gym_test.jpg`](gym
 Run the test scripts to ensure Gym runs properly
 - [`gym_test_classic.py`](gym_test_classic.py)
 - [`gym_test_mujoco.py`](gym_test_mujoco.py)
+
+Run the test command to ensure Spinning Up runs on MuJoCo Gym environment properly
+- `python -m spinup.run ppo --hid "[32,32]" --env Walker2d-v2 --exp_name mujocotest`
