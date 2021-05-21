@@ -46,7 +46,6 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING OR USING PYTHON
 - `install_requires=['gym[atari,box2d,classic_control]~=0.15.3'],`
 - Compare against [`copy_this_over___setup.py`](copy_this_over___setup.py) file.
 
-
 ### Install standard packages
 - We are doing this now to isolate install potential problems from the more complicated packages later.
 - These packages are well-developed so you should not have any trouble installing these.
@@ -64,7 +63,6 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING OR USING PYTHON
   - `conda install mpi4py`
   - `conda install cloudpickle=1.2.1`
 
-
 ### Install TensorFlow
 - `conda install tensorflow">=1.8.0,<2.0"`
 - NOTE: Spinning Up uses old versions of TensorFlow that do not match the current docs in some ways. 
@@ -78,8 +76,6 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING OR USING PYTHON
   - `sess = tf.Session()`
   - `sess.run(tensor)`
 - See https://stackoverflow.com/questions/46548339/tensorflow-tensormul0-shape-dtype-int32
-
-
 
 ### Install PyTorch with CUDA using the official PyTorch instructions at https://pytorch.org/get-started/locally/
 - `conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c nvidia`
