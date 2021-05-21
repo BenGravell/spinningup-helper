@@ -9,8 +9,8 @@ ALWAYS RUN ANACONDA PROMPT AS ADMINSTRATOR
 - Right click the app icon and use menu to 'Run as administrator'
 - Alternately, so you never forget, set your Anaconda Prompt to always run as administrator following https://www.cnet.com/how-to/always-run-a-program-in-administrator-mode-in-windows-10/
 
-ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING OR USING PYTHON
-- From an Anaconda prompt run the command
+ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FROM PROMPT
+- From an Anaconda Prompt run the command
 - `conda activate spinningup`
 
 
@@ -201,3 +201,6 @@ Throughout this section compare with the screenshot collage [`gym_test.jpg`](gym
 Run the test scripts to ensure Gym runs properly
 - [`gym_test_classic.py`](gym_test_classic.py)
 - [`gym_test_mujoco.py`](gym_test_mujoco.py)
+
+Run the test command to ensure Spinning Up runs on MuJoCo Gym environment properly
+- `python -m spinup.run ppo --hid "[32,32]" --env Walker2d-v2 --exp_name mujocotest`
