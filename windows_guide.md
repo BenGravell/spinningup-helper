@@ -123,3 +123,85 @@ And plot the results.
 - This contrasts with the Linux convention of forward slashes, which is used throughout Spinning Up.
   - Do not just blindly copy code snippets that involve paths from the Spinning Up docs!
 - Otherwise `plot.py` will not build the `logdirs` list of strings properly.
+
+
+## (Optional) MuJoCo and ToyText Gym Environments
+These instructions are optional and only for getting the additional MuJoCo and ToyText environments in Gym.
+
+These instructions roughly follow https://medium.com/@sayanmndl21/install-openai-gym-with-box2d-and-mujoco-in-windows-10-e25ee9b5c1d5 but with some small critical changes.
+
+Note that MuJoCo requires a license. Student licenses are free and can be requested from the MuJoCo developers.
+
+### Install Microsoft Visual C++ build tools 2017/2019
+- If you do not have it installed in your system, you can download from https://visualstudio.microsoft.com/downloads/.
+- Go to the link and scroll down until you reach “Tools for Visual Studio 2019” and download the "Build Tools for Visual Studio 2019"
+- Once you’ve downloaded it, open the application and you should land in “Workloads” tab. Make sure you have `C++ Build Tools` ticked and click install. The installation file will be around 4.59GB and will need you to restart your system once prompted.
+
+### Install pystan for ToyText environments in Gym
+- `conda install -c conda-forge pystan`
+
+### Prepare MuJoCo
+Since we are using Windows, we must use an older version of MuJoCo.
+- Go to https://www.roboti.us/index.html
+- Download `mjpro150 win64` which is a .zip file
+- Create a folder in your %userprofile% called “.mujoco”.
+  - From here on I will refer to %userprofile% with my own username which is "bjgra"
+- Once you have downloaded the zip for mujoco, extract it to "~bjgra\.mujoco"
+  - The file structure should be like "C:\Users\bjgra\.mujoco\mjpro150" and mjpro150 should have 5 folders
+    - bin
+    - doc
+    - include
+    - model
+    - sample
+- After registering your computer id, Roboti LLC will email you a mjkey.txt which you need to download and copy to "~\bjgra\.mujoco\mjkey.txt"
+- Now you must set the environment variables that will tell MuJoCo and mujoco-py where the MuJoCo files and license are located.
+  - From the Windows start menu (press the Windows key) search for "environment variables" and click the link to "Edit the system environment variables" in the Control Panel
+  - This will open the "System Properties" window. Click on "Environment Variables..." at the bottom.
+  - First, save your existing "Path" or "PATH" environment variable to a safe location since we are about to overwrite it.
+    - Highlight the "PATH" environment variable and click "Edit..."
+    - This will pop out a new window. At the bottom click "Edit text..."
+    - This will pop out yet another window. Now you can copy the text from the "Variable value:" field and save it somewhere safe to recover later.
+    - While we are at it, replace the "Variable value:" field with our new value "C:\Users\bjgra\.mujoco\mjpro150\bin;%PATH%;"
+  - Under the "User variables for user" box at the top, click "New..." to add a new environment variable
+    1. Environment variable for the license
+    - Variable name: MUJOCO_PY_MJKEY_PATH 
+    - Variable value: C:\Users\bjgra\.mujoco\mjkey.txt
+    2. Environment variable for the MuJoCo files
+    - Variable name: MUJOCO_PY_MUJOCO_PATH 
+    - Variable value: C:\Users\bjgra\.mujoco\mjpro150
+- NOTE: Every time you change an environment variable you must start a new Anaconda Prompt in order to register the change.
+
+### Install mujoco-py
+Since we are using Windows, we must use an older version of mujoco-py.
+- Go to the old release `mujoco 1.50.1.68` at https://github.com/openai/mujoco-py/tree/9ea9bb000d6b8551b99f9aa440862e0c7f7b4191
+- Clone or simply download and extract the repo to a folder mujoco-py.
+- Change directories in Anaconda Prompt to folder mujoco-py.
+- Install the following dependencies:
+  - `pip install cffi`
+  - `pip install pygit2`
+  - `python -m pip install --upgrade setuptools`
+  - `pip install -r requirements.txt`
+  - `pip install -r requirements.dev.txt`
+- Now we must apply a simple fix to correct a bug in the code. 
+  - Open the following scripts in an editor of your choice.
+    - \path\to\mujoco-py\scripts\gen_wrappers.py
+    - \path\to\mujoco-py\mujoco_py\generated\wrappers.pxi
+  - Replace all the instances of
+    - `isinstance(addr, (int, np.int32, np.int64))`
+  - with
+    - `hasattr(addr, '__int__')`
+- Return to your Anaconda Prompt in the folder mujoco-py and update files by force compilation:
+  - `python -c "import mujoco_py"`
+- Now you can install mujoco-py with
+  - `python setup.py install`
+
+### Install Gym
+To do a full installation of gym with ToyText, MujoCo etc. run the following code:
+- `pip install gym[all]`
+
+### Testing Gym
+Throughout this section compare with the screenshot collage [`gym_test.jpg`](gym_test.jpg).
+
+Run the test scripts to ensure Gym runs properly
+- [`gym_test_classic.py`](gym_test_classic.py)
+- [`gym_test_mujoco.py`](gym_test_mujoco.py)
