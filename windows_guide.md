@@ -19,12 +19,21 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
   - Show a list of all environments on the system
 - `conda list`        
   - Show a list of all installed packages in the currently activated environment
+- `conda config --show channels'
+  - Show a list of all active high-level channel names, in priority order (highest priority at top to lowest priority at the bottom)
 
 ## Guide
 ### Create a new environment
 - From an Anaconda prompt run the commands
 - `conda create --name spinningup python=3.6`
 - `conda activate spinningup`
+
+### Add channels
+- Add the `conda-forge` channel with the command
+- `conda config --append channels conda-forge`
+- In case you have other channels already, you can manually re-arrange the channel priority order by editing your `.condarc` file
+  - My `.condarc` file is in `C:\Users\bjgra`
+
 
 ### Clone the [spinningup Git repo](https://github.com/openai/spinningup) using Git or GitHub Desktop
 
