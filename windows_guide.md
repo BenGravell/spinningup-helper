@@ -57,6 +57,25 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
 - `install_requires=['gym[atari,box2d,classic_control]~=0.15.3'],`
 - Compare against [`copy_this_over___setup.py`](copy_this_over___setup.py) file.
 
+### Install PyTorch with CUDA using the official PyTorch instructions at https://pytorch.org/get-started/locally/
+- `conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c nvidia -c conda-forge`
+
+To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`](cpu_gpu_test.py)
+
+### Install TensorFlow
+- `conda install tensorflow">=1.8.0,<2.0"`
+- NOTE: Spinning Up uses old versions of TensorFlow that do not match the current docs in some ways. 
+- For example when doing the basics at https://www.tensorflow.org/tutorials/customization/basics you will find that 
+  - `ndarray = np.ones([3, 3])`
+  - `tensor = tf.multiply(ndarray, 42)`
+  - `print(tensor)`
+- yields a different result than the official docs.
+- This is because TensorFlow changed how it handles evaluation of the computational graph. 
+- For the old version we have to start a session and run it to evaluate the result manually.
+  - `sess = tf.Session()`
+  - `sess.run(tensor)`
+- See https://stackoverflow.com/questions/46548339/tensorflow-tensormul0-shape-dtype-int32
+
 ### Install standard packages
 - We are doing this now to isolate install potential problems from the more complicated packages later.
 - These packages are well-developed so you should not have any trouble installing these.
@@ -73,25 +92,8 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
   - `conda install tqdm`
   - `conda install mpi4py`
   - `conda install cloudpickle=1.2.1`
-
-### Install TensorFlow
-- `conda install tensorflow">=1.8.0,<2.0"`
-- NOTE: Spinning Up uses old versions of TensorFlow that do not match the current docs in some ways. 
-- For example when doing the basics at https://www.tensorflow.org/tutorials/customization/basics you will find that 
-  - `ndarray = np.ones([3, 3])`
-  - `tensor = tf.multiply(ndarray, 42)`
-  - `print(tensor)`
-- yields a different result than the official docs.
-- This is because TensorFlow changed how it handles evaluation of the computational graph. 
-- For the old version we have to start a session and run it to evaluate the result manually.
-  - `sess = tf.Session()`
-  - `sess.run(tensor)`
-- See https://stackoverflow.com/questions/46548339/tensorflow-tensormul0-shape-dtype-int32
-
-### Install PyTorch with CUDA using the official PyTorch instructions at https://pytorch.org/get-started/locally/
-- `conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c nvidia`
-
-To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`](cpu_gpu_test.py)
+- Alternatively, if you trust these standard packages to install correctly you can install all at once with
+- `conda install ipython numpy scipy pandas matplotlib=3.1.1 seaborn=0.8.1 pytest psutil joblib tqdm mpi4py cloudpickle=1.2.1` 
 
 ### Set up OpenAI Gym
 Now we need to prevent an error with OpenAI Gym, specifically with the Box2D environment which needs `swig` in order to build properly.
