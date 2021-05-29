@@ -36,6 +36,8 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
 
 
 ### Clone the [spinningup Git repo](https://github.com/openai/spinningup) using Git or GitHub Desktop
+- The location where the spinningup repo is cloned on your computer can be chosen as desired
+  - I prefer to install them in the default location at `C:\Users\bjgra\Documents\GitHub`
 
 ### Stop spinningup from automatically installing all packages at once
 - In File Explorer, navigate into the spinningup Git repo folder and edit `setup.py` and remove the following lines from the `install_requires` block:
