@@ -78,8 +78,7 @@ To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`
 - See https://stackoverflow.com/questions/46548339/tensorflow-tensormul0-shape-dtype-int32
 
 ### Install standard packages
-- We are doing this now to isolate install potential problems from the more complicated packages later.
-- These packages are well-developed so you should not have any trouble installing these.
+- We are installing these standard packages after PyTorch and TensorFlow to prevent potential problems from PyTorch and TensorFlow.
 - IMPORTANT: Install these in two separate groups to avoid issues with
 - > LinkError: post-link script failed for package ...
 - `conda install ipython numpy scipy pandas matplotlib=3.1.1 seaborn=0.8.1`
