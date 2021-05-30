@@ -57,8 +57,9 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
 - `install_requires=['gym[atari,box2d,classic_control]~=0.15.3'],`
 - Compare against [`copy_this_over___setup.py`](copy_this_over___setup.py) file.
 
-### Install PyTorch with CUDA using the official PyTorch instructions at https://pytorch.org/get-started/locally/
+### Install PyTorch with CUDA
 - `conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c nvidia -c conda-forge`
+- Official PyTorch instructions: https://pytorch.org/get-started/locally/
 
 To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`](cpu_gpu_test.py)
 
@@ -79,7 +80,11 @@ To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`
 ### Install standard packages
 - We are doing this now to isolate install potential problems from the more complicated packages later.
 - These packages are well-developed so you should not have any trouble installing these.
-- Nevertheless, it will be useful to install these one-at-a-time to isolate any issues.
+- IMPORTANT: Install these in two separate groups to avoid issues with
+- > LinkError: post-link script failed for package ...
+- `conda install ipython numpy scipy pandas matplotlib=3.1.1 seaborn=0.8.1`
+- `conda install pytest psutil joblib tqdm mpi4py cloudpickle=1.2.1`
+<!-- - Nevertheless, it will be useful to install these one-at-a-time to isolate any issues.
   - `conda install ipython`
   - `conda install numpy`
   - `conda install scipy`
@@ -93,7 +98,7 @@ To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`
   - `conda install mpi4py`
   - `conda install cloudpickle=1.2.1`
 - Alternatively, if you trust these standard packages to install correctly you can install all at once with
-- `conda install ipython numpy scipy pandas matplotlib=3.1.1 seaborn=0.8.1 pytest psutil joblib tqdm mpi4py cloudpickle=1.2.1` 
+- `conda install ipython numpy scipy pandas matplotlib=3.1.1 seaborn=0.8.1 pytest psutil joblib tqdm mpi4py cloudpickle=1.2.1`  -->
 
 ### Set up OpenAI Gym
 Now we need to prevent an error with OpenAI Gym, specifically with the Box2D environment which needs `swig` in order to build properly.
