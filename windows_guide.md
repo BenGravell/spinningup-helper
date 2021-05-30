@@ -35,8 +35,10 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
   - My `.condarc` file is in `C:\Users\bjgra`
 
 
-### Clone the [spinningup Git repo](https://github.com/openai/spinningup) using Git or GitHub Desktop
-- The location where the spinningup repo is cloned on your computer can be chosen as desired
+### Clone spinningup
+- Use [Git](https://git-scm.com/downloads) or [GitHub Desktop](https://desktop.github.com/) to clone the [spinningup Git repo](https://github.com/openai/spinningup)
+- If you are new to using Git or GitHub check out the documentation/tutorials for [Git](https://www.computerhope.com/issues/ch001927.htm) and [GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/getting-started-with-github-desktop)
+- The location where the spinningup repo is cloned on your computer can be chosen as desired.
   - I prefer to install them in the default location at `C:\Users\bjgra\Documents\GitHub`
 
 ### Stop spinningup from automatically installing all packages at once
@@ -67,17 +69,6 @@ To make sure PyTorch can use CPU and GPU without failing, run [`cpu_gpu_test.py`
 
 ### Install TensorFlow
 - `conda install tensorflow">=1.8.0,<2.0"`
-- NOTE: Spinning Up uses old versions of TensorFlow that do not match the current docs in some ways. 
-- For example when doing the basics at https://www.tensorflow.org/tutorials/customization/basics you will find that 
-  - `ndarray = np.ones([3, 3])`
-  - `tensor = tf.multiply(ndarray, 42)`
-  - `print(tensor)`
-- yields a different result than the official docs.
-- This is because TensorFlow changed how it handles evaluation of the computational graph. 
-- For the old version we have to start a session and run it to evaluate the result manually.
-  - `sess = tf.Session()`
-  - `sess.run(tensor)`
-- See https://stackoverflow.com/questions/46548339/tensorflow-tensormul0-shape-dtype-int32
 
 ### Install standard packages
 - We are installing these standard packages after PyTorch and TensorFlow to prevent potential problems from PyTorch and TensorFlow.
@@ -223,3 +214,19 @@ Run the test scripts to ensure Gym runs properly
 
 Run the test command to ensure Spinning Up runs on MuJoCo Gym environment properly
 - `python -m spinup.run ppo --hid "[32,32]" --env Walker2d-v2 --exp_name mujocotest`
+
+
+## Appendix
+
+### TensorFlow Notes
+- Spinning Up uses old versions of TensorFlow that do not match the current docs in some ways. 
+- For example when doing the basics at https://www.tensorflow.org/tutorials/customization/basics you will find that 
+  - `ndarray = np.ones([3, 3])`
+  - `tensor = tf.multiply(ndarray, 42)`
+  - `print(tensor)`
+- yields a different result than the official docs.
+- This is because TensorFlow changed how it handles evaluation of the computational graph. 
+- For the old version we have to start a session and run it to evaluate the result manually.
+  - `sess = tf.Session()`
+  - `sess.run(tensor)`
+- See https://stackoverflow.com/questions/46548339/tensorflow-tensormul0-shape-dtype-int32
