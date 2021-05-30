@@ -41,20 +41,22 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
 
 ### Stop spinningup from automatically installing all packages at once
 - In File Explorer, navigate into the spinningup Git repo folder and edit `setup.py` and remove the following lines from the `install_requires` block:
-  - `'numpy'`
-  - `'scipy'`
-  - `'matplotlib==3.1.1'`
-  - `'pandas'`
+  - `'cloud_pickle==1.2.1'`
+  - `'ipython'`
   - `'joblib'`
+  - `'matplotlib==3.1.1'`
   - `'mpi4py'`
+  - `'numpy'`
+  - `'pandas'`
   - `'pytest'`
   - `'psutil'`
-  - `'tqdm'`
-  - `'cloud_pickle==1.2.1'`
-  - `'torch==1.3.1'`
+  - `'scipy'`
+  - `'seaborn==0.8.1'`
   - `'tensorflow>=1.8.0,<2.0'`
+  - `'torch==1.3.1'`
+  - `'tqdm'`
 - This should leave only the following:
-- `install_requires=['gym[atari,box2d,classic_control]~=0.15.3'],`
+- `install_requires=['gym[atari,box2d,classic_control]~=0.15.3']`
 - Compare against [`copy_this_over___setup.py`](copy_this_over___setup.py) file.
 
 ### Install PyTorch with CUDA
