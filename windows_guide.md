@@ -19,7 +19,7 @@ ALWAYS ACTIVATE YOUR ENVIRONMENT BEFORE INSTALLING PACKAGES OR RUNNING PYTHON FR
   - Show a list of all environments on the system
 - `conda list`        
   - Show a list of all installed packages in the currently activated environment
-- `conda config --show channels'
+- `conda config --show channels`
   - Show a list of all active high-level channel names, in priority order (highest priority at top to lowest priority at the bottom)
 
 ## Guide
