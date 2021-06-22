@@ -1,5 +1,4 @@
 import gym
-from gym import envs
 
 env = gym.make('FetchReach-v1')
 env.reset()
