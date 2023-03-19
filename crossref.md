@@ -7,3 +7,4 @@
 - [garage](https://github.com/rlworkgroup/garage)
 - [fired-up](https://github.com/kashif/firedup)
 - [spinning-up-basic](https://github.com/Kaixhin/spinning-up-basic)
+- [pg-is-all-you-need](https://github.com/MrSyee/pg-is-all-you-need)
